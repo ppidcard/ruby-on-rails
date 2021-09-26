@@ -1,11 +1,8 @@
-const { environment } = require('@rails/webpacker')
+require_relative 'application'
 
-const webpack = require("webpack")
+# Initialize the Rails application.
+Rails.application.initialize!
 
-environment.plugins.append("Provide", new webpack.ProvidePlugin({
-  $: 'jquery',
-  jQuery: 'jquery',
-  Popper: ['popper.js', 'default']
-}))
-
-module.exports = environment
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+    html_tag.html_safe
+  end
