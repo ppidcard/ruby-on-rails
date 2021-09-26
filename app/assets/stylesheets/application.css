@@ -12,4 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
  */
+
+ #page-content {
+    flex: 1 0 auto;
+    background-color: lightgrey;
+  }
+  
