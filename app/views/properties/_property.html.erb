@@ -11,9 +11,9 @@
 
             </div>
             <div class="card-body">
-              
+              <h6 class="mb-3"><%= property.address %></h6>
               <%=link_to (image_tag( property.photo, size: "420x300", class:"rounded mx-auto d-block")), property_path(property) %>
-              <h6 class="mb-3 mt-3"><%= property.address %></h6>
+              <h6 class="mb-3 mt-3"><%= property.user.username %></h6>
               <%= link_to "View", property_path(property), class: "btn btn-outline-success" %>
               <%= link_to "Edit", edit_property_path(property), class: "btn btn-outline-info" %>
               <%= link_to "Delete", property_path(property), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
