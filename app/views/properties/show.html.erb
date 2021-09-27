@@ -5,14 +5,18 @@
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header">
-        <%= @property.description %>
+        <h5><%= link_to @property.description, property_path(@property), class:"text-success"%></h5>
         </div>
         <div class="card-body">
+            <%= image_tag( @property.photo, size: "700x500",  class:"rounded mx-auto d-block") -%>
+            <h6 class="mb-3 mt-3"><%= @property.address %></h6>
+            <%= link_to "View", property_path(@property), class: "btn btn-outline-success" %>
+            <%= link_to "Edit", edit_property_path(@property), class: "btn btn-outline-info" %>
+            <%= link_to "Delete", property_path(@property), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           <div class="card-text text-left">
-          <%= image_tag( @property.photo, size: "700x500",  class:"rounded mx-auto d-block") -%>
+
           </div>
           </div>
-          <%= @property.address %>
           <div class="card-footer text-muted">
           <small>Created <%= time_ago_in_words(@property.created_at) %> ago, 
           edited <%= time_ago_in_words(@property.updated_at) %> ago</small>

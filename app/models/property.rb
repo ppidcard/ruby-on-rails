@@ -1,5 +1,4 @@
 class Property < ApplicationRecord
-    before_save{ self.address = self.address.downcase }
     validates :address, presence: true, 
                 uniqueness: {case_sensitive: false}, 
                 length: { minimum: 5, maximum: 150 }
