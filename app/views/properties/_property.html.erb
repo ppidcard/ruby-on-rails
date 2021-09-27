@@ -1,0 +1,28 @@
+<div class="container">
+  <% @properties.each do |property| %>
+    <h2 class="text-center mt-4"> House </h2>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header">
+            <%= property.description %>
+            </div>
+            <div class="card-body">
+              <div class="card-text text-left">
+              <%=link_to (image_tag( property.photo, size: "420x300", class:"rounded mx-auto d-block")), property_path(property) %>
+              </div>
+              </div>
+              <%= property.address %>
+              <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(property.created_at) %> ago, 
+              edited <%= time_ago_in_words(property.updated_at) %> ago</small>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

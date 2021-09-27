@@ -4,6 +4,6 @@ class PropertiesController < ApplicationController
     end
 
     def index
-        @properties = Property.all
+        @properties = Property.paginate(page: params[:page], per_page: 5)    
     end
 end
