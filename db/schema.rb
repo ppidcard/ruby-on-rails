@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_222337) do
+ActiveRecord::Schema.define(version: 2021_09_29_215619) do
 
   create_table "properties", force: :cascade do |t|
     t.string "photo"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_09_27_222337) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
     t.string "password_digest"
+    t.string "status"
   end
 
 end
