@@ -12,8 +12,10 @@
             <%= image_tag( @property.photo, size: "700x500",  class:"rounded mx-auto d-block") -%>
             
             <h6 class="mb-3 mt-3"><%= @property.user.username %></h6>
+            <% if logged_in? && @property.user == current_user %>
             <%= link_to "Edit", edit_property_path(@property), class: "btn btn-outline-info" %>
             <%= link_to "Delete", property_path(@property), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end %>
           <div class="card-text text-left">
 
           </div>

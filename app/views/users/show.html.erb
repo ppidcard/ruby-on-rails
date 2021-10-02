@@ -3,7 +3,14 @@
 
 <%= gravatar_for @user, size: 200 %>
 
-<% if @user.status == "seller" %>
+<% if logged_in? && @user == current_user %>
+    <div class="text-center mt-4">
+        <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+    </div>
+<% end %>
+
+
+<% if @user.status == "seller" && @user.properties.any?%>
     <h3 class="text-center mt-4">Properties</h3>
     <%= render 'properties/property' %>
 <% end %>
