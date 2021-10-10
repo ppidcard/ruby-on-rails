@@ -33,8 +33,10 @@
 
     <div class="form-group row justify-content-center">
     <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-light btn-lg") %>
+    <%= link_to "Sign up with google", '/auth/google_oauth2', method: :post, class:"ml-5 btn btn-outline-light btn-lg" %>
     </div>
     <% end %>
+
 </div>
 
 </div>

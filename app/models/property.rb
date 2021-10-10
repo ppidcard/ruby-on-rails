@@ -7,4 +7,6 @@ class Property < ApplicationRecord
     validates :description, presence: true,
                 length: { minimum: 10, maximum: 1000 }
     belongs_to :user
+    has_many :property_suburbs
+    has_many :suburbs, through: :property_suburbs
 end

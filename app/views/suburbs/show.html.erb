@@ -1,0 +1,17 @@
+<h1 class="text-center mt-4">Suburb: <%= @suburb.name %></h1>
+<% if logged_in? && current_user.status == "seller" %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit suburb name", edit_suburb_path(@suburb), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+
+<h3 class="text-center mt-4">Properties</h3>
+
+<div class="flickr_pagination">
+  <%= will_paginate @properties, :container => false %>
+</div>
+
+<%= render 'properties/property' %>
+
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @properties, :container => false %>
