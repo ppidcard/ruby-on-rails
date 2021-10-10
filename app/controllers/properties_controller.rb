@@ -7,11 +7,21 @@ class PropertiesController < ApplicationController
     end
 
     def index
-        @properties = Property.paginate(page: params[:page], per_page: 5)    
+        if params[:suburb_id]
+        @suburb = Suburb.find(params[:suburb_id])
+        @properties = @suburb.properties.paginate(page: params[:page], per_page: 5)    
+        else
+            @properties = Property.paginate(page: params[:page], per_page: 5)    
+        end
     end
 
     def new
-        @property = Property.new
+        if params[:suburb_id]
+            @suburb = Suburb.find(params[:suburb_id])
+            @property = @suburb.properties.build
+        else
+            @property = Property.new
+        end
     end
 
     def edit
@@ -27,8 +37,16 @@ class PropertiesController < ApplicationController
     end
 
     def create
-        @property = Property.new(property_params)
-        @property.user = current_user
+        if params[:suburb_id]
+            @suburb = Suburb.find(params[:suburb_id])
+            @property = Property.new(property_params)
+            @property.suburb_ids = [@suburb.id]
+            @property.user = current_user
+        else
+            @property = Property.new(property_params)
+            @property.user = current_user
+        end
+
         if @property.save
             flash[:notice] = "Property was created successfully."
             redirect_to @property
@@ -37,9 +55,13 @@ class PropertiesController < ApplicationController
           end
     end
 
+    def destroy
+        @property.destroy
+        redirect_to properties_path
+    end
     private
     def property_params
-        params.require(:property).permit(:photo, :address, :description, suburb_ids: [])  
+        params.require(:property).permit(:photo, :address, :description, suburb_ids:[])  
     end
 
     def set_property

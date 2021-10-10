@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: "sessions#destroy"
-  resources :suburbs, except: [:destroy]
+  resources :suburbs, except: [:destroy] do 
+    resources :properties
+  end
 
 end

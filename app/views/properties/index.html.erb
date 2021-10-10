@@ -1,4 +1,8 @@
-<h1 class="text-center mt-4">Listing all properties</h1>
+<% if @suburb %>
+  <h1 class="text-center mt-4">Listing properties in <%= @suburb.name %></h1>
+<% else %>
+  <h1 class="text-center mt-4">Listing all properties</h1>
+<% end %>
 
 <div class="flickr_pagination">
   <%= will_paginate @properties, :container => false %>
