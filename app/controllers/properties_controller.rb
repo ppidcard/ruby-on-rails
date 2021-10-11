@@ -40,7 +40,7 @@ class PropertiesController < ApplicationController
         if params[:suburb_id]
             @suburb = Suburb.find(params[:suburb_id])
             @property = Property.new(property_params)
-            @property.suburb_ids = [@suburb.id, suburb.id]
+            @property.suburb_ids = [@suburb.id, @suburb.id]
             @property.user = current_user
         else
             @property = Property.new(property_params)
