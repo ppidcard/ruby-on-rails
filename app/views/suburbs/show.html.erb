@@ -1,7 +1,10 @@
 <h1 class="text-center mt-4">Suburb: <%= @suburb.name %></h1>
 <% if logged_in? && current_user.status == "seller" %>
   <div class="text-center mt-4">
-    <%= link_to "Edit suburb name", edit_suburb_path(@suburb), class: "btn btn-outline-info" %>
+    <%= link_to "Edit suburb", edit_suburb_path(@suburb), class: "btn btn-outline-info mr-2" %>
+    
+    <%= link_to "Create new property", new_suburb_property_path(@suburb), class: "btn btn-outline-info" %>
+    
   </div>
 <% end %>
 

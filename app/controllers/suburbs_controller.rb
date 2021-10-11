@@ -14,11 +14,17 @@ class SuburbsController < ApplicationController
     end
 
     def edit
-
+        @suburb = Suburb.find(params[:id])
     end
 
     def update
-
+        @suburb = Suburb.find(params[:id])
+        if @suburb.update(suburb_params)
+            flash[:notice] = "Property was updated successfully."
+            redirect_to @suburb
+        else 
+            render 'new'
+        end 
     end
 
     def index
